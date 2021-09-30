@@ -1,0 +1,62 @@
+/*
+ * @NOTE: Prepend a `~` to css file paths that are in your node_modules
+ *        See https://github.com/webpack-contrib/sass-loader#imports
+ */
+
+* {
+  font-family: 'Poppins', sans-serif;
+  margin: 0%;
+  padding: 0%;
+}
+
+body {
+  background-color: white;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listproduct-main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.homepage-main > img {
+  height: 500px;
+  width: 500px;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #b1afaf;
+  text-align: left;
+  padding: 8px;
+  font-size: 1.75rem;
+}
+
+tr:nth-child(even) {
+  border: 1px solid #b1afaf;
+  font-size: 1.75rem;
+  background-color: #dddddd;
+}

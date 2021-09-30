@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="utf-8" />
+    <title>rMart</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+
+  <script>
+    window.electron.ipcRenderer.once('ipc-example', (arg) => {
+      // eslint-disable-next-line no-console
+      console.log(arg);
+    });
+
+    window.electron.ipcRenderer.myPing();
+  </script>
+</html>
