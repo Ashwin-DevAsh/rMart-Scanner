@@ -21,6 +21,7 @@ const HomePage = ({ orderID }) => {
   }, []);
 
   const getProductsAndDisplay = async (qrCode) => {
+    console.log(qrCode)
     const result = await qrServices.getProductFromQr(qrCode);
     if (result.order.length == 0) {
       setInvalidTokenError(true);
@@ -29,12 +30,11 @@ const HomePage = ({ orderID }) => {
       history.replace(`/listProducts/${qrCode}`);
     } else {
       setAlreadyDeliverdError(true);
-      // alert(result.order[0].status);
     }
   };
 
   const handleError = async (data: string) => {
-    data = 'f6c2a2dc-b02b-43c0-8af0-963503eefef';
+    data = '2cc01bf9-4e1b-497e-939b-690f51cdb417';
     getProductsAndDisplay(data);
   };
 

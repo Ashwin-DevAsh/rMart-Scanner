@@ -12,10 +12,10 @@ export default function App() {
     <Router>
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route
+        {/* <Route
           path="/:orderID"
           render={({ match }) => <HomePage orderID={match.params.orderID} />}
-        />
+        /> */}
         <Route
           path="/listProducts/:qrCode"
           render={({ match }) => <ListProducts qrCode={match.params.qrCode} />}

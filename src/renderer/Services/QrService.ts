@@ -11,6 +11,7 @@ export default class QrService {
     const result = await axios.get(`${this.url}/getQrToken/${qrCode}`, {
       headers: { key: this.key },
     });
+    console.log(result)
     return result.data;
   }
 

@@ -85,7 +85,6 @@
       "repo": "electron-react-boilerplate"
     }
   },
-
   "jest": {
     "testURL": "http://localhost/",
     "moduleNameMapper": {

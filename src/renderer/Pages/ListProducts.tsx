@@ -16,8 +16,9 @@ const ListProducts = ({ qrCode }) => {
     switch (event.keyCode) {
       case 32: {
         let result = await qrServices.makeDelivery(qrCode);
+        console.log(result)
         if (result.message === 'success') {
-          history.replace(`/${products.orederid}`);
+          history.replace('/');
           localStorage.removeItem('products');
         } else {
           setProcessError(true);
