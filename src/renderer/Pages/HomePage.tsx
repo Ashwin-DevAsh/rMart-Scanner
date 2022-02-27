@@ -11,6 +11,8 @@ const HomePage = ({ orderID }) => {
   const [alreadyDeliverdError, setAlreadyDeliverdError] = useState(false);
   const [invalidTokenError, setInvalidTokenError] = useState(false);
   const [showCompletedToast, setShowCompletedToast] = useState(false);
+  const [showScannerError, setShowScannnerError] = useState(false);
+
 
   useEffect(() => {
     localStorage.removeItem('products');
@@ -34,8 +36,7 @@ const HomePage = ({ orderID }) => {
   };
 
   const handleError = async (data: string) => {
-    data = '2cc01bf9-4e1b-497e-939b-690f51cdb417';
-    getProductsAndDisplay(data);
+       handleScan(data)
   };
 
   const handleScan = async (data) => {
@@ -57,6 +58,18 @@ const HomePage = ({ orderID }) => {
         message="Already Deliverd"
         onClose={() => {
           setAlreadyDeliverdError(false);
+        }}
+      ></Snackbar>
+         <Snackbar
+        anchorOrigin={{
+          horizontal: 'center',
+          vertical: 'bottom',
+        }}
+        open={showScannerError}
+        autoHideDuration={5000}
+        message="Scanner Error"
+        onClose={() => {
+          setShowScannnerError(false);
         }}
       ></Snackbar>
       <Snackbar
