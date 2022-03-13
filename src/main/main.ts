@@ -88,7 +88,7 @@ const createWindow = async () => {
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
-  const data = fs.readFileSync('/home/settings.json',{encoding:'utf8', flag:'r'})
+  const data = fs.readFileSync('../../../../settings.json',{encoding:'utf8', flag:'r'})
 
 
   try{
