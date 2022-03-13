@@ -15,17 +15,19 @@ export default class QrService {
     return result.data;
   }
 
-  async makeDelivery(qrCode: string) {
-    console.log('caling');
+  async makeDelivery(qrCode: string,ordersIDs) {
+    console.log('caling',ordersIDs);
     const result = await axios.post(
-      `${this.url}/makeDelivery`,
+      `${this.url}/makePartialDelivery`,
       {
         id: qrCode,
+        productIds:ordersIDs
       },
       {
         headers: { key: this.key },
       }
     );
+    console.log( result.data)
     return result.data;
   }
 }

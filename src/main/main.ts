@@ -98,7 +98,7 @@ const createWindow = async () => {
     mainWindow.maximize();
     mainWindow.show();
     mainWindow.focus();
-    mainWindow.setKiosk(false);
+    mainWindow.setKiosk(true);
     // }
   });
 

@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, Redirect, useLocation } from 'react-router-dom';
 import BarcodeReader from '../components/BarcodeReader';
 import QrService from '../Services/QrService';
-
 const qrServices = new QrService();
 
 const HomePage = ({ orderID }) => {
@@ -14,18 +13,10 @@ const HomePage = ({ orderID }) => {
   const [showScannerError, setShowScannnerError] = useState(false);
 
 
-  useEffect(() => {
-    localStorage.removeItem('products');
-    if (orderID) {
-      setShowCompletedToast(true);
-    }
-    return () => {};
-  }, []);
-
   const getProductsAndDisplay = async (qrCode) => {
-    console.log(qrCode)
+    console.log(qrCode);
     const result = await qrServices.getProductFromQr(qrCode);
-    if (result.order.length == 0) {
+    if (result.order.length === 0) {
       setInvalidTokenError(true);
     } else if (result.order[0].status !== 'delivered') {
       localStorage.setItem('products', JSON.stringify(result.order[0]));
@@ -35,14 +26,14 @@ const HomePage = ({ orderID }) => {
     }
   };
 
-  const handleError = async (data: string) => {
-       handleScan(data)
-  };
-
   const handleScan = async (data) => {
     if (!localStorage.getItem('products')) {
       getProductsAndDisplay(data);
     }
+  };
+
+  const handleError = async (data: string) => {
+    // handleScan()
   };
 
   return (
