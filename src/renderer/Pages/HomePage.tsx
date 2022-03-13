@@ -33,7 +33,7 @@ const HomePage = ({ orderID }) => {
   };
 
   const handleError = async (data: string) => {
-    // handleScan()
+    getProductsAndDisplay('39420048-898f-4d16-963a-d30b8732e445');
   };
 
   return (

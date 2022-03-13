@@ -15,6 +15,8 @@ import { app, BrowserWindow, shell, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import { resolveHtmlPath } from './util';
+import fs from "fs-extra"
+
 
 export default class AppUpdater {
   constructor() {
@@ -86,6 +88,31 @@ const createWindow = async () => {
 
   mainWindow.loadURL(resolveHtmlPath('index.html'));
 
+  try{
+
+    const data = fs.readFileSync('settings.json',{encoding:'utf8', flag:'r'})
+
+    mainWindow.webContents
+    .executeJavaScript(`localStorage.setItem("settings",${JSON.stringify(data)});`, true)
+    .then(result => {
+      console.log(result);
+    });
+
+    mainWindow.webContents
+    .executeJavaScript('localStorage.getItem("settings");', true)
+    .then(result => {
+      console.log(result);
+    });
+
+
+
+  }catch(e){
+
+  }
+
+
+
+
   // @TODO: Use 'ready-to-show' event
   //        https://github.com/electron/electron/blob/main/docs/api/browser-window.md#using-ready-to-show-event
   mainWindow.webContents.on('did-finish-load', () => {
@@ -95,10 +122,10 @@ const createWindow = async () => {
     // if (process.env.START_MINIMIZED) {
     //   mainWindow.minimize();
     // } else {
-    mainWindow.maximize();
+    // mainWindow.maximize();
     mainWindow.show();
     mainWindow.focus();
-    mainWindow.setKiosk(true);
+    mainWindow.setKiosk(false);
     // }
   });
 

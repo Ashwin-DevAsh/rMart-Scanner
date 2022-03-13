@@ -2,7 +2,8 @@ import { Snackbar } from '@material-ui/core';
 import React, { useEffect, useState, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import QrService from '../Services/QrService';
-import {AvailableProducts} from '../../../../settings.json'
+import fs from "fs-extra"
+
 
 const qrServices = new QrService();
 
@@ -49,6 +50,13 @@ const ListProducts = ({ qrCode }) => {
     const orders = JSON.parse(localStorage.getItem('products')!)
     const filteredOrders = []
     const filterOrderIDs = []
+
+
+    // console.log(data)
+
+    const {AvailableProducts} = JSON.parse(localStorage.getItem("settings"))
+
+    console.log("Available products ",AvailableProducts)
 
     orders.products.forEach((item)=>{
       console.log(item)

@@ -5525,10 +5525,10 @@
   "resolved" "https://registry.npmjs.org/fresh/-/fresh-0.5.2.tgz"
   "version" "0.5.2"
 
-"fs-extra@^10.0.0":
-  "integrity" "sha512-C5owb14u9eJwizKGdchcDUQeFtlSHHthBk8pbX9Vc1PFZrLombudjDnNns88aYslCyF6IY5SUw3Roz6xShcEIQ=="
-  "resolved" "https://registry.npmjs.org/fs-extra/-/fs-extra-10.0.0.tgz"
-  "version" "10.0.0"
+"fs-extra@^10.0.0", "fs-extra@^10.0.1":
+  "integrity" "sha512-NbdoVMZso2Lsrn/QwLXOy6rm0ufY2zEOKCDzJR/0kBsb0E6qed0P3iYK+Ath3BfvXEeu4JhEtXLgILx5psUfag=="
+  "resolved" "https://registry.npmjs.org/fs-extra/-/fs-extra-10.0.1.tgz"
+  "version" "10.0.1"
   dependencies:
     "graceful-fs" "^4.2.0"
     "jsonfile" "^6.0.1"
