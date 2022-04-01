@@ -154,16 +154,31 @@ export const HomePage = ()=>{
   }
 
   const handleError = async (data) => {
-    // data = '90fc741f-3a04-4efd-875b-88f210596dcb'
-    // console.log("data = ",data)
+    data = '90fc741f-3a04-4efd-875b-88f210596dcb'
+    console.log("data = ",data)
     // if(isOrderExist("data")){
     //   setShowMessage("Order Already in queue")
-    // }else if(orders.length>=5){
-    //   setShowMessage("Maximum delivery count reached")
-    // }else{
-    //   getProductsAndDisplay(data);
-    // }
+    // }else
+    if(orders.length>=5){
+      setShowMessage("Maximum delivery count reached")
+    }else{
+      getProductsAndDisplay(data);
+    }
   };
+
+  const changeOrder=(key)=>{
+    switch(key){
+      case 38: {
+        setSelectedOrder(subSelectedOrder())
+        break;
+      }
+      case 40: {
+        setSelectedOrder(addSelectedOrder())
+        break;
+
+      }
+    }
+}
 
   const handleKeyDown = async (event) => {
     // eslint-disable-next-line default-case
@@ -217,19 +232,7 @@ export const HomePage = ()=>{
               selectedOrder={selectedOrder}
               cancelOrder={cancelOrder}
               makeDeliver = {deliver}
-              changeOrder={(key)=>{
-                  switch(key){
-                    case 38: {
-                      setSelectedOrder(subSelectedOrder())
-                      break;
-                    }
-                    case 40: {
-                      setSelectedOrder(addSelectedOrder())
-                      break;
-
-                    }
-                  }
-              }}
+              changeOrder={changeOrder}
               />
         )
       }
