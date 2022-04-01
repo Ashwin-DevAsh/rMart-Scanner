@@ -83,7 +83,7 @@ export const HomePage = ()=>{
           }
       })
 
-      // orders.products = filteredOrders
+      orders.products = filteredOrders
       return {...orders,filterOrderIDs}
   }
 
@@ -159,11 +159,11 @@ export const HomePage = ()=>{
     // if(isOrderExist("data")){
     //   setShowMessage("Order Already in queue")
     // }else
-    if(orders.length>=5){
-      setShowMessage("Maximum delivery count reached")
-    }else{
-      getProductsAndDisplay(data);
-    }
+    // if(orders.length>=5){
+    //   setShowMessage("Maximum delivery count reached")
+    // }else{
+    //   getProductsAndDisplay(data);
+    // }
   };
 
   const changeOrder=(key)=>{
