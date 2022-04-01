@@ -52,8 +52,8 @@ export const HomePage = ()=>{
     localStorage.setItem("totalOrder",totalOrder+1)
   }
 
-  const resetTotal = ()=>{
-    localStorage.setItem("totalOrder",orders.length)
+  const resetTotal = (list)=>{
+    localStorage.setItem("totalOrder",list? list.length:orders.length)
 
   }
 
@@ -83,7 +83,7 @@ export const HomePage = ()=>{
           }
       })
 
-      orders.products = filteredOrders
+      // orders.products = filteredOrders
       return {...orders,filterOrderIDs}
   }
 
@@ -135,10 +135,10 @@ export const HomePage = ()=>{
     const order = orders[selectedOrder]
     const result = await qrServices.makeDelivery(order.qrCode,order.filterOrderIDs);
     if (result.message === 'success') {
-       subTotalOrder()
        remove(orders, orders[selectedOrder])
        setOrders([...orders])
-        resetSelect()
+       resetTotal([...orders])
+       resetSelect()
        setShowMessage(`Order ${order.orederid} successfully delivered`);
     } else {
       setShowMessage("Unable to deliver this product");
@@ -148,21 +148,21 @@ export const HomePage = ()=>{
   const cancelOrder = async ()=>{
     remove(orders, orders[selectedOrder])
     setOrders([...orders])
-    subTotalOrder()
+    resetTotal([...orders])
     resetSelect()
 
   }
 
   const handleError = async (data) => {
-    // data = 'affb74e6-001d-48d8-9178-1a230dc27a1d'
-    // console.log("data = ",data)
-    // if(isOrderExist("data")){
-    //   setShowMessage("Order Already in queue")
-    // }else if(orders.length>=5){
-    //   setShowMessage("Maximum delivery count reached")
-    // }else{
-    //   getProductsAndDisplay(data);
-    // }
+    data = 'affb74e6-001d-48d8-9178-1a230dc27a1d'
+    console.log("data = ",data)
+    if(isOrderExist("data")){
+      setShowMessage("Order Already in queue")
+    }else if(orders.length>=5){
+      setShowMessage("Maximum delivery count reached")
+    }else{
+      getProductsAndDisplay(data);
+    }
   };
 
   return (<div className="homepage-main">
