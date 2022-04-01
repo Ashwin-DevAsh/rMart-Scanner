@@ -17,13 +17,10 @@ export const HomePage = ()=>{
   useEffect(()=>{
 
     resetSelect()
-    resetTotal()
+    resetTotal(orders)
 
   },[])
 
-  const getSelectedOrder = ()=>{
-    return parseInt(localStorage.getItem("selectedOrder")) || 0
-  }
 
   const addSelectedOrder = ()=>{
     const selectedOrder = parseInt(localStorage.getItem("selectedOrder")) || 0
