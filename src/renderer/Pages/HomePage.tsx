@@ -181,6 +181,7 @@ export const HomePage = ()=>{
 }
 
   const handleKeyDown = async (event) => {
+    console.log("Key down ",event)
     // eslint-disable-next-line default-case
     switch (event.keyCode) {
       case 32: {
@@ -202,8 +203,16 @@ export const HomePage = ()=>{
     }
   };
 
+  useEffect(()=>{
+    window.parent.document.addEventListener('keydown', handleKeyDown)
+    return ()=>{
+      window.parent.document.removeEventListener('keydown', handleKeyDown)
+    }
+    },[
+    ])
+
   return (<div className="homepage-main">
-      <BarcodeReader onError={handleError} onScan={handleScan} onKeyDetect={handleKeyDown} />
+      <BarcodeReader onError={handleError} onScan={handleScan} />
       <Snackbar
         anchorOrigin={{
           horizontal: 'center',
