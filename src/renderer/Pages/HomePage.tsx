@@ -91,7 +91,7 @@ export const HomePage = ()=>{
           }
       })
 
-      // orders.products = filteredOrders
+      orders.products = filteredOrders
       return {...orders,filterOrderIDs}
   }
 
