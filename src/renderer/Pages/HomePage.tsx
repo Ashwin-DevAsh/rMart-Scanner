@@ -66,7 +66,7 @@ export const HomePage = ()=>{
   }
 
   const resetSelect = ()=>{
-    selectedOrder(0)
+    setSelectedOrder(0)
     localStorage.setItem("selectedOrder",0)
 
   }
