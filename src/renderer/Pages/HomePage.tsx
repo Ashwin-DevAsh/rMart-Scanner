@@ -21,6 +21,9 @@ export const HomePage = ()=>{
 
   },[])
 
+  const getSelectedOrder = ()=>{
+    return parseInt(localStorage.getItem("selectedOrder")) || 0
+  }
 
   const addSelectedOrder = ()=>{
     const selectedOrder = parseInt(localStorage.getItem("selectedOrder")) || 0
@@ -129,10 +132,10 @@ export const HomePage = ()=>{
   };
 
   const deliver = async ()=>{
-    const order = orders[selectedOrder]
+    const order = orders[getSelectedOrder()]
     const result = await qrServices.makeDelivery(order.qrCode,order.filterOrderIDs);
     if (result.message === 'success') {
-       remove(orders, orders[selectedOrder])
+       remove(orders, orders[getSelectedOrder()])
        setOrders([...orders])
        resetTotal([...orders])
        resetSelect()
@@ -143,7 +146,7 @@ export const HomePage = ()=>{
   }
 
   const cancelOrder = async ()=>{
-    remove(orders, orders[selectedOrder])
+    remove(orders, orders[getSelectedOrder()])
     setOrders([...orders])
     resetTotal([...orders])
     resetSelect()
