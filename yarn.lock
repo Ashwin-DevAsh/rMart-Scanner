@@ -7634,6 +7634,11 @@
     "pify" "^3.0.0"
     "strip-bom" "^3.0.0"
 
+"loadash@^1.0.0":
+  "integrity" "sha512-xlX5HBsXB3KG0FJbJJG/3kYWCfsCyCSus3T+uHVu6QL6YxAdggmm3QeyLgn54N2yi5/UE6xxL5ZWJAAiHzHYEg=="
+  "resolved" "https://registry.npmjs.org/loadash/-/loadash-1.0.0.tgz"
+  "version" "1.0.0"
+
 "loader-runner@^4.2.0":
   "integrity" "sha512-92+huvxMvYlMzMt0iIOukcwYBFpkYJdpl2xsZ7LrlayO7E8SOv+JJUEK17B/dJIHAOLMfh2dZZ/Y18WgmGtYNw=="
   "resolved" "https://registry.npmjs.org/loader-runner/-/loader-runner-4.2.0.tgz"

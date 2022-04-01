@@ -9,6 +9,10 @@
   padding: 0%;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 body {
   background-color: white;
   display: flex;
@@ -29,7 +33,8 @@ body {
 
 .listproduct-main {
   height: 100vh;
-  width: 100vw;
+  width: 95vw;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,9 +47,18 @@ body {
 }
 
 table {
+  margin: 20px;
+  border: 1px solid #b1afaf;
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+
+
+}
+
+.selected{
+  border-left-color: #fe724c;
+  border-left-width: 5px;
 }
 
 td,
