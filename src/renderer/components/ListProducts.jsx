@@ -10,35 +10,35 @@ const ListProducts = ({ orders,selectedOrder,changeOrder,cancelOrder,makeDeliver
   const [ordersIDs,setOrdersIDs] = useState([])
   const [processError, setProcessError,deliver] = useState(false);
 
-  const handleKeyDown = async (event) => {
-    // eslint-disable-next-line default-case
-    switch (event.keyCode) {
-      case 32: {
-        makeDeliver()
-        break;
-      }
-      case 38: {
-        changeOrder(38)
-        break
-      }
-      case 40: {
-        changeOrder(40)
-        break
-      }
-      case 27: {
-        cancelOrder()
-        break;
-      }
-    }
-  };
+  // const handleKeyDown = async (event) => {
+  //   // eslint-disable-next-line default-case
+  //   switch (event.keyCode) {
+  //     case 32: {
+  //       makeDeliver()
+  //       break;
+  //     }
+  //     case 38: {
+  //       changeOrder(38)
+  //       break
+  //     }
+  //     case 40: {
+  //       changeOrder(40)
+  //       break
+  //     }
+  //     case 27: {
+  //       cancelOrder()
+  //       break;
+  //     }
+  //   }
+  // };
 
-  useEffect(()=>{
-    document.addEventListener('keydown', handleKeyDown)
-    return ()=>{
-      document.removeEventListener('keydown', handleKeyDown)
-    }
-  },[
-  ])
+  // useEffect(()=>{
+  //   document.addEventListener('keydown', handleKeyDown)
+  //   return ()=>{
+  //     document.removeEventListener('keydown', handleKeyDown)
+  //   }
+  // },[
+  // ])
 
   return (
     <div className="listproduct-main" >

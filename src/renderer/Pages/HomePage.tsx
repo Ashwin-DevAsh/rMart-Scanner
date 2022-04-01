@@ -154,19 +154,41 @@ export const HomePage = ()=>{
   }
 
   const handleError = async (data) => {
-    data = 'affb74e6-001d-48d8-9178-1a230dc27a1d'
-    console.log("data = ",data)
-    if(isOrderExist("data")){
-      setShowMessage("Order Already in queue")
-    }else if(orders.length>=5){
-      setShowMessage("Maximum delivery count reached")
-    }else{
-      getProductsAndDisplay(data);
+    // data = '90fc741f-3a04-4efd-875b-88f210596dcb'
+    // console.log("data = ",data)
+    // if(isOrderExist("data")){
+    //   setShowMessage("Order Already in queue")
+    // }else if(orders.length>=5){
+    //   setShowMessage("Maximum delivery count reached")
+    // }else{
+    //   getProductsAndDisplay(data);
+    // }
+  };
+
+  const handleKeyDown = async (event) => {
+    // eslint-disable-next-line default-case
+    switch (event.keyCode) {
+      case 32: {
+        deliver()
+        break;
+      }
+      case 38: {
+        changeOrder(38)
+        break
+      }
+      case 40: {
+        changeOrder(40)
+        break
+      }
+      case 27: {
+        cancelOrder()
+        break;
+      }
     }
   };
 
   return (<div className="homepage-main">
-      <BarcodeReader onError={handleError} onScan={handleScan} />
+      <BarcodeReader onError={handleError} onScan={handleScan} onKeyDetect={handleKeyDown} />
       <Snackbar
         anchorOrigin={{
           horizontal: 'center',
