@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ListProducts from 'renderer/components/ListProducts';
 import BarcodeReader from '../components/BarcodeReader';
 import QrService from '../Services/QrService';
-import {pull} from 'lodash'
+import {remove} from 'lodash'
 const qrServices = new QrService();
 
 
@@ -136,7 +136,7 @@ export const HomePage = ()=>{
     const result = await qrServices.makeDelivery(order.qrCode,order.filterOrderIDs);
     if (result.message === 'success') {
        subTotalOrder()
-       pull(orders, orders[selectedOrder])
+       remove(orders, orders[selectedOrder])
        setOrders([...orders])
         resetSelect()
        setShowMessage(`Order ${order.orederid} successfully delivered`);
@@ -146,7 +146,7 @@ export const HomePage = ()=>{
   }
 
   const cancelOrder = async ()=>{
-    pull(orders, orders[selectedOrder])
+    remove(orders, orders[selectedOrder])
     setOrders([...orders])
     subTotalOrder()
     resetSelect()
