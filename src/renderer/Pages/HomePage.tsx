@@ -18,7 +18,7 @@ export const HomePage = ()=>{
 
     resetSelect()
     resetTotal(orders)
-
+    resetOrders(orders)
   },[])
 
   const getSelectedOrder = ()=>{
@@ -55,6 +55,14 @@ export const HomePage = ()=>{
   const resetTotal = (list)=>{
     localStorage.setItem("totalOrder",list? list.length:orders.length)
 
+  }
+
+  const resetOrders = (list)=>{
+    localStorage.setItem("orders",JSON.stringify(list? list:orders))
+  }
+
+  const getOrders = ()=>{
+    return JSON.parse(localStorage.getItem("orders") || "")
   }
 
   const resetSelect = ()=>{
@@ -109,6 +117,7 @@ export const HomePage = ()=>{
       if(order.products.length!=0){
         addTotalOrder()
         setOrders([...orders,{...order,qrCode}])
+        resetOrders([...orders,{...order,qrCode}])
       }else{
         setShowMessage("Products Not Available in this counter")
       }
@@ -132,12 +141,14 @@ export const HomePage = ()=>{
   };
 
   const deliver = async ()=>{
-    const order = orders[getSelectedOrder()]
+    const order = getOrders()[getSelectedOrder()]
     const result = await qrServices.makeDelivery(order.qrCode,order.filterOrderIDs);
     if (result.message === 'success') {
+
        remove(orders, orders[getSelectedOrder()])
        setOrders([...orders])
        resetTotal([...orders])
+       resetOrders([...orders])
        resetSelect()
        setShowMessage(`Order ${order.orederid} successfully delivered`);
     } else {
@@ -146,23 +157,24 @@ export const HomePage = ()=>{
   }
 
   const cancelOrder = async ()=>{
-    remove(orders, orders[getSelectedOrder()])
+    remove(orders, getOrders()[getSelectedOrder()])
     setOrders([...orders])
     resetTotal([...orders])
+    resetOrders([...orders])
     resetSelect()
 
   }
 
   const handleError = async (data) => {
-    data = 'affb74e6-001d-48d8-9178-1a230dc27a1d'
-    console.log("data = ",data)
-    if(isOrderExist("data")){
-      setShowMessage("Order Already in queue")
-    }else if(orders.length>=5){
-      setShowMessage("Maximum delivery count reached")
-    }else{
-      getProductsAndDisplay(data);
-    }
+    // data = 'affb74e6-001d-48d8-9178-1a230dc27a1d'
+    // console.log("data = ",data)
+    // if(isOrderExist("data")){
+    //   setShowMessage("Order Already in queue")
+    // }else if(orders.length>=5){
+    //   setShowMessage("Maximum delivery count reached")
+    // }else{
+    //   getProductsAndDisplay(data);
+    // }
   };
 
   return (<div className="homepage-main">
