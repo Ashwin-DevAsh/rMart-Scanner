@@ -83,7 +83,7 @@ export const HomePage = ()=>{
           }
       })
 
-      orders.products = filteredOrders
+      // orders.products = filteredOrders
       return {...orders,filterOrderIDs}
   }
 
@@ -154,65 +154,19 @@ export const HomePage = ()=>{
   }
 
   const handleError = async (data) => {
-    data = '90fc741f-3a04-4efd-875b-88f210596dcb'
+    data = 'affb74e6-001d-48d8-9178-1a230dc27a1d'
     console.log("data = ",data)
-    // if(isOrderExist("data")){
-    //   setShowMessage("Order Already in queue")
-    // }else
-    // if(orders.length>=5){
-    //   setShowMessage("Maximum delivery count reached")
-    // }else{
-    //   getProductsAndDisplay(data);
-    // }
-  };
-
-  const changeOrder=(key)=>{
-    switch(key){
-      case 38: {
-        setSelectedOrder(subSelectedOrder())
-        break;
-      }
-      case 40: {
-        setSelectedOrder(addSelectedOrder())
-        break;
-
-      }
-    }
-}
-
-  const handleKeyDown = async (event) => {
-    console.log("Key down ",event)
-    // eslint-disable-next-line default-case
-    switch (event.keyCode) {
-      case 32: {
-        deliver()
-        break;
-      }
-      case 38: {
-        changeOrder(38)
-        break
-      }
-      case 40: {
-        changeOrder(40)
-        break
-      }
-      case 27: {
-        cancelOrder()
-        break;
-      }
+    if(isOrderExist("data")){
+      setShowMessage("Order Already in queue")
+    }else if(orders.length>=5){
+      setShowMessage("Maximum delivery count reached")
+    }else{
+      getProductsAndDisplay(data);
     }
   };
-
-  useEffect(()=>{
-    window.parent.document.addEventListener('keydown', handleKeyDown)
-    return ()=>{
-      window.parent.document.removeEventListener('keydown', handleKeyDown)
-    }
-    },[
-    ])
 
   return (<div className="homepage-main">
-      <BarcodeReader onError={handleError} onScan={handleScan} />
+      <BarcodeReader onError={handleError} onScan={handleScan}  />
       <Snackbar
         anchorOrigin={{
           horizontal: 'center',
@@ -241,7 +195,19 @@ export const HomePage = ()=>{
               selectedOrder={selectedOrder}
               cancelOrder={cancelOrder}
               makeDeliver = {deliver}
-              changeOrder={changeOrder}
+              changeOrder={(key)=>{
+                  switch(key){
+                    case 38: {
+                      setSelectedOrder(subSelectedOrder())
+                      break;
+                    }
+                    case 40: {
+                      setSelectedOrder(addSelectedOrder())
+                      break;
+
+                    }
+                  }
+              }}
               />
         )
       }
