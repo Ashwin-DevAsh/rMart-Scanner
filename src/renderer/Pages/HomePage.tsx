@@ -181,7 +181,7 @@ export const HomePage = ()=>{
   };
 
   return (<div className="homepage-main">
-      <BarcodeReader onError={handleError} onScan={handleScan}  />
+      <BarcodeReader onError={handleError} onScan={handleScan} avgTimeByChar={100} timeBeforeScanTest={150} />
       <Snackbar
         anchorOrigin={{
           horizontal: 'center',
