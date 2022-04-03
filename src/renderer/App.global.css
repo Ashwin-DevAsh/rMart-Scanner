@@ -31,6 +31,27 @@ body {
   justify-content: center;
 }
 
+.home{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home > header{
+  height: 70px;
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding-right: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
 .listproduct-main {
   height: 100vh;
   width: 95vw;
@@ -52,12 +73,14 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+}
 
-
+.rMart-switch > .MuiSwitch-thumb{
+  color: red;
 }
 
 .selected{
-  border-left-color: #fe724c;
+  border-left-color: #299BED;
   border-left-width: 5px;
 }
 

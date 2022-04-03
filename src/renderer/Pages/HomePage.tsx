@@ -4,6 +4,7 @@ import ListProducts from 'renderer/components/ListProducts';
 import BarcodeReader from '../components/BarcodeReader';
 import QrService from '../Services/QrService';
 import {remove} from 'lodash'
+import Home from 'renderer/components/Home';
 const qrServices = new QrService();
 
 
@@ -197,11 +198,9 @@ export const HomePage = ()=>{
 
       {
 
-      orders.length==0 && (<video
-          src="http://mart.rajalakshmimart.com/getProductVideos/qrcode.mp4"
-          autoPlay
-          loop
-        />)
+      orders.length==0 && (
+         <Home/>
+      )
       }
       {
         orders.length !=0 && (
