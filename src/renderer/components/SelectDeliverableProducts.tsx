@@ -70,7 +70,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function SelectProduct({open,onClose}) {
+export default function SelectAvailableProduct({open,onClose}) {
   const productService = new ProductService()
   const classes = useStyles();
   const [searchValue,setSearchValue] = useState('')
@@ -114,7 +114,7 @@ export default function SelectProduct({open,onClose}) {
           <Toolbar>
 
             <Typography variant="h6" className={classes.title}>
-              Select Products
+              Devilerable Products
             </Typography>
             <div className={classes.search}>
             <InputBase
