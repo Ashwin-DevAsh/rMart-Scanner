@@ -94,16 +94,20 @@ const createWindow = async () => {
   try{
 
 
-    mainWindow.webContents
-    .executeJavaScript(`localStorage.setItem("settings",${JSON.stringify(data)});`, true)
-    .then(result => {
-      console.log(result);
-    });
+
 
     mainWindow.webContents
     .executeJavaScript('localStorage.getItem("settings");', true)
     .then(result => {
-      console.log(result);
+        if(!result){
+          mainWindow.webContents
+          .executeJavaScript(`localStorage.setItem("settings",${JSON.stringify(data)});`, true)
+          .then(result => {
+            console.log(result);
+          });
+        }else{
+          console.log("data already present",result)
+        }
     });
 
 
