@@ -37,20 +37,6 @@ export default class ProductService {
       headers:{'key': this.merchantKey}
     }
       );
-
-    console.log({
-      "productID": parseInt(product.productid),
-      "productName": product.productname,
-      "ownerID": product.ownerid,
-      "discription": product.discription,
-      "category":product.category,
-      "price": parseInt(product.price),
-      "discount": product.discount,
-      "isavailable": product.isavaliable,
-      "quantity": product.quantity,
-      "imageUrl": product.imageurl,
-      "availableOn": product.availableon
-    })
   }
 
 }
